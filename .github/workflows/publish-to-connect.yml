@@ -25,5 +25,4 @@ jobs:
         with:
           url: ${{ secrets.CONNECT_SERVER }}
           api-key: ${{ secrets.CONNECT_API_KEY }}
-          dir: ./
-          title: runas-app-gha
+          dir: .:run-as-app-gha
