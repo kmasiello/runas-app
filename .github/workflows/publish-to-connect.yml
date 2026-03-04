@@ -1,0 +1,19 @@
+name: Deploy to Posit Connect
+
+on:
+  push:
+    branches: [ main ]  # Adjust to your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Publish to Connect
+        uses: rstudio/connect-publish@main
+        with:
+          url: ${{ secrets.CONNECT_SERVER }}
+          api-key: ${{ secrets.CONNECT_API_KEY }}
+          dir: ./
