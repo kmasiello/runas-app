@@ -26,3 +26,4 @@ jobs:
           url: ${{ secrets.CONNECT_SERVER }}
           api-key: ${{ secrets.CONNECT_API_KEY }}
           dir: ./
+          name: runas-app-gha
