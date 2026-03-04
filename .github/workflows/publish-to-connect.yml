@@ -14,7 +14,7 @@ jobs:
       - name: Network Debug
         run: |
           # Strip protocol and path for clean testing
-          TARGET=$(echo "${{ secrets.POSIT_CONNECT_SERVER }}" | sed -e 's|^[^/]*//||' -e 's|/.*$||')
+          TARGET=$(echo "${{ secrets.CONNECT_SERVER }}" | sed -e 's|^[^/]*//||' -e 's|/.*$||')
           echo "Testing: $TARGET"
           
           nslookup $TARGET || echo "DNS failed"
