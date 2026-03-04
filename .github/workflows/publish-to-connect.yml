@@ -11,6 +11,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Network Debug
+        run: |
+          # Strip protocol and path for clean testing
+          TARGET=$(echo "${{ secrets.POSIT_CONNECT_SERVER }}" | sed -e 's|^[^/]*//||' -e 's|/.*$||')
+          echo "Testing: $TARGET"
+          
+          nslookup $TARGET || echo "DNS failed"
+          ping -c 3 $TARGET || echo "Ping failed"
+
       - name: Publish to Connect
         uses: rstudio/actions/connect-publish@main
         with:
